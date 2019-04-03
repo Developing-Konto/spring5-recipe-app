@@ -1,6 +1,8 @@
 package com.butcheer.controllers;
 
+import com.butcheer.services.RecipeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -10,10 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 
-   @RequestMapping({"", "/", "/index", "/index.html"})
-   public String getIndexPage(){
+   private RecipeService recipeService;
 
+   public IndexController(
+      RecipeService recipeService) {
+
+      this.recipeService = recipeService;
+   }
+
+
+   @RequestMapping({"", "/", "/index", "/index.html"})
+   public String getIndexPage(Model model) {
+      model.addAttribute("recipes", recipeService.findAll());
       return "index";
    }
+
+
+
 
 }

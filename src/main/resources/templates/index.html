@@ -1,11 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Recipe Home</title>
+    <title>Title</title>
+
+    <style>
+        td:nth-child(odd) {
+            background-color: #fefefe;
+        }
+
+        td:nth-child(even) {
+            background-color: #aaaaaa;
+        }
+
+        td {
+            /*min-width: 400px;*/
+        }
+
+        td.narrow {
+            min-width: 0;
+            width: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1>My Recipes!</h1>
+    <h1 th:text="'All recipes:'">All stored recipes: </h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>description</td>
+                <td>prepTime</td>
+                <td>cookTime</td>
+                <td>servings</td>
+                <td>source</td>
+                <td>url</td>
+                <td>directions</td>
+                <td>image</td>
+                <td>notes</td>
+                <td>ingredients</td>
+                <td>difficulty</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="recipe : ${recipes}">
+                <td class="narrow" th:text="${recipe.id}">Id</td>
+                <td th:text="${recipe.description}">description</td>
+                <td class="narrow" th:text="${recipe.prepTime}">prepTime</td>
+                <td class="narrow" th:text="${recipe.cookTime}">cookTime</td>
+                <td class="narrow" th:text="${recipe.servings}">servings</td>
+                <td th:text="${recipe.source}">source</td>
+                <td th:text="${recipe.url}">url</td>
+                <td class="narrow" th:text="${recipe.directions}">directions</td>
+                <td class="narrow" th:text="${recipe.image}">image</td>
+                <td th:text="${recipe.notes.recipeNotes}">notes</td>
+                <td>
+                    <span th:each="ingredient : ${recipe.ingredients}">
+                        <span th:text="${ingredient.amount}">ingr amount</span>
+                        <span th:text="${ingredient.uom.description}">ingredient uom</span>
+                        <span th:text="${ingredient.description}">ingredient descriptin</span>
+                    </span>
+                </td>
+                <td class="narrow" th:text="${recipe.difficulty}">difficulty</td>
+            </tr>
 
+
+        </tbody>
+
+    </table>
 </body>
 </html>
