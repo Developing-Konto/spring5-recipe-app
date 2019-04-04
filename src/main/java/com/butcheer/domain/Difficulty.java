@@ -1,8 +1,9 @@
 package com.butcheer.domain;
 
 /**
- * Created by Butcheer on 2019-04-02 13:58
+ * Created by Butcheer 04.04.2019.
  */
 public enum Difficulty {
-   EASY, MODERATE, HARD;
+
+    EASY, MODERATE, KIND_OF_HARD, HARD
 }

@@ -4,7 +4,7 @@ import com.butcheer.domain.Recipe;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by Butcheer on 2019-04-02 14:32
+ * Created by Butcheer 04.04.2019.
  */
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 }
